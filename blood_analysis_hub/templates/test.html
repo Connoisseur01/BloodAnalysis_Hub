@@ -8,5 +8,15 @@
             <a class="btn btn-danger btn-sm m-1" href="{{ url_for('tests.delete_test', test_id=test.id) }}">Delete</a>
         </form>
     </div>
+    <ul>
+        <li>Hemoglobin {{ test.hb }}</li>
+        <li>Hematrocit {{ test.hct }}</li>
+        <li>Red Blood Cell Count {{ test.rbc }}</li>
+        <li>White Blood Cell Count {{ test.wbc }}</li>
+        <li>Platelet Count {{ test.pc }}</li>
+        <li>Mean Corpuscular Volume {{ test.mcv }}</li>
+        <li>Mean Corpuscular Hemoglobin {{ test.mch }}</li>
+        <li>Mean Corpuscular Hemoglobin Concentration {{ test.mchc }}</li>
+    </ul>
     <p>{{ test.content }}</p>
 {% endblock content %}

@@ -23,6 +23,14 @@ class Test(db.Model):
     title = db.Column(db.String(100), nullable=False)
     date_posted = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
     content = db.Column(db.Text, nullable=False)
+    hb = db.Column(db.Integer)
+    hct = db.Column(db.Integer)
+    rbc = db.Column(db.Integer)
+    wbc = db.Column(db.Integer)
+    pc = db.Column(db.Integer)
+    mcv = db.Column(db.Integer)
+    mch = db.Column(db.Integer)
+    mchc = db.Column(db.Integer)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
 
     def __repr__(self):
