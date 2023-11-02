@@ -1,5 +1,5 @@
 from flask import render_template, url_for, flash, redirect, request, Blueprint
-from . import db, bcrypt
+from blood_analysis_hub import db, bcrypt
 from blood_analysis_hub.users.forms import RegistrationForm, LoginForm, UpdateAccountForm
 from blood_analysis_hub.models import User
 from flask_login import login_user, current_user, logout_user, login_required

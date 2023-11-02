@@ -1,6 +1,6 @@
 import os
 import secrets
-from . import app
+from blood_analysis_hub import app
 
 def save_picture(form_picture):
     random_name = secrets.token_hex(8)

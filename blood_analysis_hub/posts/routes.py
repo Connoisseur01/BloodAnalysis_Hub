@@ -1,5 +1,5 @@
 from flask import render_template, url_for, flash, redirect, request, abort, Blueprint
-from . import db
+from blood_analysis_hub import db
 from blood_analysis_hub.posts.forms import PostForm
 from blood_analysis_hub.models import Post
 from flask_login import current_user, login_required
