@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 {% block content %}
     {% for post in posts %}
-        <a href="{{ url_for('post', post_id=post.id) }}">{{ post.title }}</a>
+        <a href="{{ url_for('posts.post', post_id=post.id) }}">{{ post.title }}</a>
         <p>By {{ post.author.username }} on {{ post.date_posted.strftime('%Y-%m-%d') }}</p>
     {% endfor %}
 {% endblock content %}
