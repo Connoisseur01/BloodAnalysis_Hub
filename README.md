@@ -1,4 +1,4 @@
-# Blood Analysis App
+# Blood Analysis Hub
 
 ## Description
 
