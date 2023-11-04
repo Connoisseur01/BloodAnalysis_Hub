@@ -1,8 +1,8 @@
 from flask_wtf import FlaskForm
 from flask_wtf.file import FileField, FileAllowed
 from flask_login import current_user
-from wtforms import StringField, PasswordField, SubmitField, BooleanField
-from wtforms.validators import DataRequired, Length, Email, equal_to, ValidationError
+from wtforms import IntegerField, SelectField, StringField, PasswordField, SubmitField, BooleanField
+from wtforms.validators import DataRequired, Length, Email, equal_to, ValidationError, Optional, NumberRange
 from blood_analysis_hub.models import User
 
 class RegistrationForm(FlaskForm):
@@ -31,6 +31,8 @@ class LoginForm(FlaskForm):
     submit = SubmitField('Login')
     
 class UpdateAccountForm(FlaskForm):
+    age = IntegerField('Age', validators=[Optional(), NumberRange(min=0, max=120)])
+    gender = SelectField('Gender', choices=['male', 'female', 'other'])
     username = StringField('Username',
                             validators=[DataRequired(), Length(min=2, max=20)])
     email = StringField('Email', validators=[DataRequired(), Email()])

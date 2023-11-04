@@ -1,3 +1,4 @@
+from sqlalchemy import CheckConstraint
 from . import db, login_manager
 from datetime import datetime
 from flask_login import UserMixin
@@ -12,7 +13,16 @@ class User(db.Model, UserMixin):
     email = db.Column(db.String(120), unique=True, nullable=False)
     image_file = db.Column(db.String(20), nullable=False, default='default.jpg')
     password = db.Column(db.String(60), nullable=False)
+    age = db.Column(db.Integer, CheckConstraint('age >= 0 AND age <= 120'), nullable=True)
+    gender = db.Column(db.Enum('male', 'female', 'other', name='gender_enum'), nullable=True)
     tests = db.relationship('Test', backref='author', lazy=True)
+    
+    def __init__(self, username, email, password, age=None, gender=None):
+        self.username = username
+        self.email = email
+        self.password = password
+        self.age = age
+        self.gender = gender
 
     def __repr__(self):
         return f"User('{self.username}', '{self.email}', '{self.image_file}')"
