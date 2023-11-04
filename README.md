@@ -24,10 +24,11 @@ The Blood Analysis App is a web application designed to help users analyze and i
 
     ```bash
     git clone https://github.com/Connoisseur01/BloodAnalysis_Hub.git
-    cd BloodAnalysis_Hub```
+    cd BloodAnalysis_Hub
 
 2. Install dependencies:
 
+    ```bash
     pip install -r requirements.txt
 
 3. database migration:
@@ -38,9 +39,10 @@ The Blood Analysis App is a web application designed to help users analyze and i
     app = create_app()
     app.app_context().push()
     db.create_all()
-    exit()```
+    exit()
 
 4. Run the application:
 
+    ```bash
     python run.py
 
