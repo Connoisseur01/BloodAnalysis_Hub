@@ -12,9 +12,10 @@ tests = Blueprint('tests', __name__)
 def new_test():
     form = TestForm()
     if form.validate_on_submit():
-        test = Test(title = form.title.data, content=form.content.data, author=current_user,
+        test = Test(title = form.title.data, author=current_user,
                     hb=form.hb.data, hct=form.hct.data, rbc=form.rbc.data,
-                    wbc=form.wbc.data, pc=form.pc.data, mcv=form.mcv.data, mchc=form.mchc.data)
+                    wbc=form.wbc.data, pc=form.pc.data, mch=form.mch.data,
+                    mcv=form.mcv.data, mchc=form.mchc.data)
         db.session.add(test)
         db.session.commit()
         flash('Your test has been added', 'success')
@@ -43,7 +44,6 @@ def update_test(test_id):
         test.mcv = form.mcv.data 
         test.mch = form.mch.data 
         test.mchc = form.mchc.data
-        test.content = form.content.data
         db.session.commit()
         flash('successfully updated!', 'success')
         return redirect(url_for('tests.test', test_id=test.id))
@@ -57,7 +57,6 @@ def update_test(test_id):
         form.mcv.data = test.mcv
         form.mch.data = test.mch
         form.mchc.data = test.mchc
-        form.content.data = test.content
     return render_template('create_test.html', title='Update Test',
                            form=form, legend='Update test')
     

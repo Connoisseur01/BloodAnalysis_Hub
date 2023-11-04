@@ -1,16 +1,22 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, TextAreaField, SubmitField, IntegerField
-from wtforms.validators import DataRequired
+from wtforms import StringField, SubmitField, IntegerField, DecimalField
+from wtforms.validators import DataRequired, NumberRange
 
 class TestForm(FlaskForm):
     title = StringField('Title', validators=[DataRequired()])
-    hb = IntegerField('Hemoglobin', validators=[DataRequired()])
-    hct = IntegerField('Hematocrit', validators=[DataRequired()])
-    rbc = IntegerField('Red Blood Cell Count', validators=[DataRequired()])
+    
+    # Complete blood count (CBC)
+    # Red blood cells
+    hb = DecimalField('Hemoglobin (Hb)', places=2, rounding=None, validators=[DataRequired()])
+    hct = IntegerField('Hematocrit (Hct)', validators=[DataRequired(), NumberRange(min=0, max=100)])
+    rbc = IntegerField('Red Blood Cell Count (RBC)', validators=[DataRequired()])
+    # Red blood cell indices
+    mcv = DecimalField('Mean Corpuscular Volume (MCV)', places=2, rounding=None, validators=[DataRequired()])
+    mch = DecimalField('Mean Corpuscular Hemoglobin (MCH)', places=2, rounding=None, validators=[DataRequired()])
+    mchc = DecimalField('Mean Corpuscular Hemoglobin Concentration (MCHC)', places=2, rounding=None, validators=[DataRequired()])
+    # white blood cells
     wbc = IntegerField('White Blood Cell Count', validators=[DataRequired()])
+    # Platelets
     pc = IntegerField('Platelet Count', validators=[DataRequired()])
-    mcv = IntegerField('Mean Corpuscular Volume', validators=[DataRequired()])
-    mch = IntegerField('Mean Corpuscular Hemoglobin', validators=[DataRequired()])
-    mchc = IntegerField('Mean Corpuscular Hemoglobin Concentration', validators=[DataRequired()])
-    content = TextAreaField('Content', validators=[DataRequired()])
+    
     submit = SubmitField('Add')

@@ -32,15 +32,20 @@ class Test(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(100), nullable=False)
     date_posted = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
-    content = db.Column(db.Text, nullable=False)
-    hb = db.Column(db.Integer)
-    hct = db.Column(db.Integer)
-    rbc = db.Column(db.Integer)
-    wbc = db.Column(db.Integer)
-    pc = db.Column(db.Integer)
-    mcv = db.Column(db.Integer)
-    mch = db.Column(db.Integer)
-    mchc = db.Column(db.Integer)
+    # Complete blood count (CBC)
+    # Red blood cells
+    hb = db.Column(db.Numeric(precision=2), nullable=False) # Heamoglobin [g/L]
+    hct = db.Column(db.Integer, CheckConstraint('hct >= 0 AND hct <= 100'), nullable=False) # Haematoglobin [%]
+    rbc = db.Column(db.Integer, nullable=False) # Red Blood Cell Count [cells/L]
+    # Red blood cell indices
+    mcv = db.Column(db.Numeric(precision=2), nullable=False) # Mean Corpuscular Volume [fL]
+    mch = db.Column(db.Numeric(precision=2), nullable=False) # Mean Corpuscular Hemoglobin [pg]
+    mchc = db.Column(db.Numeric(precision=2), nullable=False) # Mean Corpuscular Hemoglobin Concentration [g/L]
+    # white blood cells
+    wbc = db.Column(db.Integer, nullable=False) # White Blood Cell Count [cells/L]
+    # Platelets
+    pc = db.Column(db.Integer, nullable=False) # Platelet Count [cells/L]
+    
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
 
     def __repr__(self):
