@@ -1,8 +1,10 @@
 from flask import render_template, url_for, flash, redirect, request, abort, Blueprint
-from blood_analysis_hub import db
+from flask_login import current_user, login_required
+from blood_analysis_hub import db, CBC_REFERENCE
 from blood_analysis_hub.tests.forms import TestForm
 from blood_analysis_hub.models import Test
-from flask_login import current_user, login_required
+from blood_analysis_hub.tests.utils import compare_test_results 
+
 
 
 tests = Blueprint('tests', __name__)
@@ -25,6 +27,12 @@ def new_test():
 @tests.route("/test/<int:test_id>")
 def test(test_id):
     test = Test.query.get_or_404(test_id)
+    if not current_user.gender:
+        flash('please select your gender in the account page for test evaluation', 'danger')
+    else:
+        reference = CBC_REFERENCE[current_user.gender]
+        interpretation = compare_test_results(test, reference)
+        return render_template('test.html', title=test.title, test=test, interpretation=interpretation)
     return render_template('test.html', title=test.title, test=test)
 
 @tests.route("/test/<int:test_id>/update", methods=['GET', 'POST'])
