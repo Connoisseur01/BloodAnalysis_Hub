@@ -35,16 +35,16 @@ class Test(db.Model):
     # Complete blood count (CBC)
     # Red blood cells
     hb = db.Column(db.Numeric(scale=2), nullable=False) # Heamoglobin [g/L]
-    hct = db.Column(db.Integer, CheckConstraint('hct >= 0 AND hct <= 100'), nullable=False) # Haematoglobin [%]
-    rbc = db.Column(db.Integer, nullable=False) # Red Blood Cell Count [cells/L]
+    hct = db.Column(db.Numeric(scale=2), CheckConstraint('hct >= 0 AND hct <= 100'), nullable=False) # Haematoglobin [%]
+    rbc = db.Column(db.Numeric(scale=2), nullable=False) # Red Blood Cell Count [cells/L]
     # Red blood cell indices
     mcv = db.Column(db.Numeric(scale=2), nullable=False) # Mean Corpuscular Volume [fL]
     mch = db.Column(db.Numeric(scale=2), nullable=False) # Mean Corpuscular Hemoglobin [pg]
     mchc = db.Column(db.Numeric(scale=2), nullable=False) # Mean Corpuscular Hemoglobin Concentration [g/L]
     # white blood cells
-    wbc = db.Column(db.Integer, nullable=False) # White Blood Cell Count [cells/L]
+    wbc = db.Column(db.Numeric(scale=2), nullable=False) # White Blood Cell Count [cells/L]
     # Platelets
-    pc = db.Column(db.Integer, nullable=False) # Platelet Count [cells/L]
+    pc = db.Column(db.Numeric(scale=2), nullable=False) # Platelet Count [cells/L]
     
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
 
