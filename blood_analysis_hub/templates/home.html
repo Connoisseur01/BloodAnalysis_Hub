@@ -1,47 +1,53 @@
 {% extends "layout.html" %}
 {% block content %}
-    <div>
-        {% for test in page_tests.items %}
-            <a href="{{ url_for('tests.test', test_id=test.id) }}">{{ test.title }}</a>
-            <p>By {{ test.author.username }} on {{ test.date_posted.strftime('%Y-%m-%d') }}</p>
-        {% endfor %}
-        {% for page_num in page_tests.iter_pages(left_edge=1, right_edge=1, left_current=1, right_current=2) %}
-            {% if page_num %}
-                <a href="{{ url_for('main.home', page=page_num) }}">{{ page_num }}</a>
-            {% else %}
-            ...
-            {% endif %}
-        {% endfor %}
-    </div>
-    <div>
-        <label for="HB">HB</label>
-        <input type="checkbox" id="HB" unchecked>
+    <main class="home">
+        <div class="tests">
+            {% for test in page_tests.items %}
+                <div class="test">
+                    <a href="{{ url_for('tests.test', test_id=test.id) }}">{{ test.title }}</a>
+                    <p>on {{ test.date_posted.strftime('%Y-%m-%d') }}</p>
+                </div>
+            {% endfor %}
+        </div>
+        <div class="pagination">
+            {% for page_num in page_tests.iter_pages(left_edge=1, right_edge=1, left_current=1, right_current=2) %}
+                {% if page_num %}
+                    <a href="{{ url_for('main.home', page=page_num) }}">{{ page_num }}</a>
+                {% else %}
+                ...
+                {% endif %}
+            {% endfor %}
+        </div>
+        <div class="boxes">
+            <label for="HB">HB</label>
+            <input type="checkbox" class="styled-checkbox" id="HB" unchecked>
 
-        <label for="HCT">HCT</label>
-        <input type="checkbox" id="HCT" unchecked>
+            <label for="HCT">HCT</label>
+            <input type="checkbox" class="styled-checkbox" id="HCT" unchecked>
 
-        <label for="RBC">RBC</label>
-        <input type="checkbox" id="RBC" unchecked>
+            <label for="RBC">RBC</label>
+            <input type="checkbox" class="styled-checkbox" id="RBC" unchecked>
 
-        <label for="MCV">MCV</label>
-        <input type="checkbox" id="MCV" unchecked>
+            <label for="MCV">MCV</label>
+            <input type="checkbox" class="styled-checkbox" id="MCV" unchecked>
 
-        <label for="MCH">MCH</label>
-        <input type="checkbox" id="MCH" unchecked>
+            <label for="MCH">MCH</label>
+            <input type="checkbox" class="styled-checkbox" id="MCH" unchecked>
 
-        <label for="MCHC">MCHC</label>
-        <input type="checkbox" id="MCHC" unchecked>
+            <label for="MCHC">MCHC</label>
+            <input type="checkbox" class="styled-checkbox" id="MCHC" unchecked>
 
-        <label for="WBC">WBC</label>
-        <input type="checkbox" id="WBC" unchecked>
+            <label for="WBC">WBC</label>
+            <input type="checkbox" class="styled-checkbox" id="WBC" unchecked>
 
-        <label for="PLT">PLT</label>
-        <input type="checkbox" id="PLT" unchecked>
-
-
+            <label for="PLT">PLT</label>
+            <input type="checkbox" class="styled-checkbox" id="PLT" unchecked>
+        </div>
+        
         <container id="graphContainer"></container>
+        
+    </main>
 
-    </div>
     <script>
         window.graphData = {
         labels: [],

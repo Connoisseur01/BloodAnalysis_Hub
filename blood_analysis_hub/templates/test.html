@@ -1,12 +1,10 @@
 {% extends "layout.html" %}
 {% block content %}
     <h2 class="article-title">{{ test.title }}</h2>
-    <p>By {{ test.author.username }} on {{ test.date_posted.strftime('%Y-%m-%d') }}</p>
+    <p>{{ test.date_posted.strftime('%Y-%m-%d') }}</p>
     <div>
-        <a class="btn btn-secondery btm-sm m-1" href="{{ url_for('tests.update_test', test_id=test.id) }}">Update</a>
-        <form method="POST" action="">
-            <a class="btn btn-danger btn-sm m-1" href="{{ url_for('tests.delete_test', test_id=test.id) }}">Delete</a>
-        </form>
+        <a href="{{ url_for('tests.update_test', test_id=test.id) }}">Update</a>
+        <a href="{{ url_for('tests.delete_test', test_id=test.id) }}">Delete</a>
     </div>
     {% for attribute, value in test.__dict__.items() %}
     {% if attribute not in ('title', 'date_posted', 'user_id', 'id', '_sa_instance_state', 'author') %}

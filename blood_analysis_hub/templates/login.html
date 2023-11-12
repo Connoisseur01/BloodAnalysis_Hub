@@ -1,34 +1,31 @@
 {% extends "layout.html" %}
 {% block content %}
-    <div class="content-section">
+    <div>
         <form method="POST" action="">
             {{ form.hidden_tag() }}
-            <fieldset class="form-group">
-                <Legend class="border-bottom mb-4">Log In</Legend>
+            <fieldset>
+                <Legend>Log In</Legend>
                 <div class="form-group">
-                    {{ form.email.label(class="form-control-label") }}
-                    {{ form.email(class="form-control form-control-lg") }}
+                    {{ form.email.label(class="form-label") }}
+                    {{ form.email() }}
                 </div>
                 <div class="form-group">
-                    {{ form.password.label(class="form-control-label") }}
-                    {{ form.password(class="form-control form-control-lg") }}
+                    {{ form.password.label(class="form-label") }}
+                    {{ form.password() }}
                 </div>
                 <div class="form-check">
-                    {{ form.remember(class="form-check-input") }}
-                    {{ form.remember.label(class="form-check-label") }}
+                    {{ form.remember() }}
+                    {{ form.remember.label(class="form-label") }}
                 </div>
             </fieldset>
             <div class="form-group">
-                {{ form.submit(class="btn btn-outline-info") }}
+                {{ form.submit() }}
             </div>
-            <small class="text-muted ml-2">
-                <a href="#">Forgot password?</a>
-            </small>
         </form>
     </div>
-    <div class="border-top pt-3">
-        <small class="text-muted">
-            New to Blood Analisys Hub? <a class="ml-2" href="{{ url_for('users.register') }}">Sign Up</a>
+    <div>
+        <small>
+            New to Blood Analisys Hub? <a href="{{ url_for('users.register') }}">Sign Up</a>
         </small>
     </div>
 {% endblock content %}

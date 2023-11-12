@@ -4,46 +4,46 @@
         <form method="POST" action="">
             {{ form.hidden_tag() }}
             <fieldset class="form-group">
-                <Legend class="border-bottom mb-4">{{ legend }}</Legend>
+                <Legend >{{ legend }}</Legend>
                 <div class="form-group">
-                    {{ form.title.label(class="form-control-label") }}
-                    {{ form.title(class="form-control form-control-lg") }}
+                    {{ form.title.label(class="form-label") }}
+                    {{ form.title() }}
                 </div>
                 <div class="form-group">
-                    {{ form.hb.label(class="form-control-label") }}
-                    {{ form.hb(class="form-control form-control-lg") }}
+                    {{ form.hb.label(class="form-label") }}
+                    {{ form.hb() }}
                 </div>
                 <div class="form-group">
-                    {{ form.hct.label(class="form-control-label") }}
-                    {{ form.hct(class="form-control form-control-lg") }}
+                    {{ form.hct.label(class="form-label") }}
+                    {{ form.hct() }}
                 </div>
                 <div class="form-group">
-                    {{ form.rbc.label(class="form-control-label") }}
-                    {{ form.rbc(class="form-control form-control-lg") }}
+                    {{ form.rbc.label(class="form-label") }}
+                    {{ form.rbc() }}
                 </div>
                 <div class="form-group">
-                    {{ form.wbc.label(class="form-control-label") }}
-                    {{ form.wbc(class="form-control form-control-lg") }}
+                    {{ form.wbc.label(class="form-label") }}
+                    {{ form.wbc() }}
                 </div>
                 <div class="form-group">
-                    {{ form.pc.label(class="form-control-label") }}
-                    {{ form.pc(class="form-control form-control-lg") }}
+                    {{ form.pc.label(class="form-label") }}
+                    {{ form.pc() }}
                 </div>
                 <div class="form-group">
-                    {{ form.mcv.label(class="form-control-label") }}
-                    {{ form.mcv(class="form-control form-control-lg") }}
+                    {{ form.mcv.label(class="form-label") }}
+                    {{ form.mcv() }}
                 </div>
                 <div class="form-group">
-                    {{ form.mch.label(class="form-control-label") }}
-                    {{ form.mch(class="form-control form-control-lg") }}
+                    {{ form.mch.label(class="form-label") }}
+                    {{ form.mch() }}
                 </div>
                 <div class="form-group">
-                    {{ form.mchc.label(class="form-control-label") }}
-                    {{ form.mchc(class="form-control form-control-lg") }}
+                    {{ form.mchc.label(class="form-label") }}
+                    {{ form.mchc() }}
                 </div>
             </fieldset>
             <div class="form-group">
-                {{ form.submit(class="btn btn-outline-info") }}
+                {{ form.submit() }}
             </div>
         </form>
     </div>
