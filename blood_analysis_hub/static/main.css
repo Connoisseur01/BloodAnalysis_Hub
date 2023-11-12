@@ -8,10 +8,6 @@ html, body {
 body {
   background: linear-gradient(to bottom, #ffffff, #c9c9c9);
 }
-  
-/* h1, h2, h3, h4, h5, h6 {
-  color: #444444;
-} */
 
 header {
   width: 100%;
@@ -19,6 +15,7 @@ header {
   color: #ecf0f1;
   padding: 0px;
   text-align: center;
+  margin-bottom: 4rem;
 }
 
 .navbar {
@@ -67,7 +64,7 @@ header {
   left: 50%;
   transform: translateX(-50%);
   padding: 15px;
-  color: #ffffff;
+  color: #000000;
   border-radius: .5rem;
   box-shadow: 0 4px .5rem rgba(0, 0, 0, 0.2);
 }
