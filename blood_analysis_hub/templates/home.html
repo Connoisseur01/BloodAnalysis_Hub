@@ -3,30 +3,30 @@
     <main class="home">
         <div class="tests">
             {% for test in page_tests.items %}
-                <div class="test">
-                    <a href="{{ url_for('tests.test', test_id=test.id) }}">{{ test.title }}</a>
+                <a href="{{ url_for('tests.test', test_id=test.id) }}" class="test">
+                    <h2>{{ test.title }}</h2>
                     <p>on {{ test.date_posted.strftime('%Y-%m-%d') }}</p>
-                </div>
+                </a>
             {% endfor %}
         </div>
         <div class="pagination">
             {% for page_num in page_tests.iter_pages(left_edge=1, right_edge=1, left_current=1, right_current=2) %}
                 {% if page_num %}
-                    <a href="{{ url_for('main.home', page=page_num) }}">{{ page_num }}</a>
+                    <a class="option" href="{{ url_for('main.home', page=page_num) }}">{{ page_num }}</a>
                 {% else %}
                 ...
                 {% endif %}
             {% endfor %}
         </div>
-        <div class="boxes">
-            <button id="HB" onclick="show_graph(this.id)">HB</button>
-            <button id="HCT" onclick="show_graph(this.id)">HCT</button>
-            <button id="RBC" onclick="show_graph(this.id)">RBC</button>
-            <button id="MCV" onclick="show_graph(this.id)">MCV</button>
-            <button id="MCH" onclick="show_graph(this.id)">MCH</button>
-            <button id="MCHC" onclick="show_graph(this.id)">MCHC</button>
-            <button id="WBC" onclick="show_graph(this.id)">WBC</button>
-            <button id="PLT" onclick="show_graph(this.id)">PLT</button>
+        <div class="graph-buttons">
+            <button class="option" id="HB" onclick="show_graph(this.id)">HB</button>
+            <button class="option" id="HCT" onclick="show_graph(this.id)">HCT</button>
+            <button class="option" id="RBC" onclick="show_graph(this.id)">RBC</button>
+            <button class="option" id="MCV" onclick="show_graph(this.id)">MCV</button>
+            <button class="option" id="MCH" onclick="show_graph(this.id)">MCH</button>
+            <button class="option" id="MCHC" onclick="show_graph(this.id)">MCHC</button>
+            <button class="option" id="WBC" onclick="show_graph(this.id)">WBC</button>
+            <button class="option" id="PLT" onclick="show_graph(this.id)">PLT</button>
         </div>
         
         <container id="graphContainer"></container>
