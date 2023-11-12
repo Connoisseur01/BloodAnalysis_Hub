@@ -19,29 +19,14 @@
             {% endfor %}
         </div>
         <div class="boxes">
-            <label for="HB">HB</label>
-            <input type="checkbox" class="styled-checkbox" id="HB" unchecked>
-
-            <label for="HCT">HCT</label>
-            <input type="checkbox" class="styled-checkbox" id="HCT" unchecked>
-
-            <label for="RBC">RBC</label>
-            <input type="checkbox" class="styled-checkbox" id="RBC" unchecked>
-
-            <label for="MCV">MCV</label>
-            <input type="checkbox" class="styled-checkbox" id="MCV" unchecked>
-
-            <label for="MCH">MCH</label>
-            <input type="checkbox" class="styled-checkbox" id="MCH" unchecked>
-
-            <label for="MCHC">MCHC</label>
-            <input type="checkbox" class="styled-checkbox" id="MCHC" unchecked>
-
-            <label for="WBC">WBC</label>
-            <input type="checkbox" class="styled-checkbox" id="WBC" unchecked>
-
-            <label for="PLT">PLT</label>
-            <input type="checkbox" class="styled-checkbox" id="PLT" unchecked>
+            <button id="HB" onclick="show_graph(this.id)">HB</button>
+            <button id="HCT" onclick="show_graph(this.id)">HCT</button>
+            <button id="RBC" onclick="show_graph(this.id)">RBC</button>
+            <button id="MCV" onclick="show_graph(this.id)">MCV</button>
+            <button id="MCH" onclick="show_graph(this.id)">MCH</button>
+            <button id="MCHC" onclick="show_graph(this.id)">MCHC</button>
+            <button id="WBC" onclick="show_graph(this.id)">WBC</button>
+            <button id="PLT" onclick="show_graph(this.id)">PLT</button>
         </div>
         
         <container id="graphContainer"></container>
