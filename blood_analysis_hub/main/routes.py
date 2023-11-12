@@ -9,7 +9,7 @@ main = Blueprint('main', __name__)
 @login_required
 def home():
     page = request.args.get('page', 1, type=int)
-    page_tests = Test.query.filter_by(author=current_user).paginate(page=page, per_page=5)
+    page_tests = Test.query.filter_by(author=current_user).paginate(page=page, per_page=7)
     tests = Test.query.filter_by(author=current_user).all()
     return render_template('home.html', page_tests=page_tests, tests=tests)
 
