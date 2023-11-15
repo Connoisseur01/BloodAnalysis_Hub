@@ -31,12 +31,10 @@ class LoginForm(FlaskForm):
     submit = SubmitField('Login')
     
 class UpdateAccountForm(FlaskForm):
-    age = IntegerField('Age', validators=[Optional(), NumberRange(min=0, max=120)])
     gender = SelectField('Gender', choices=['male', 'female', 'other'])
     username = StringField('Username',
                             validators=[DataRequired(), Length(min=2, max=20)])
     email = StringField('Email', validators=[DataRequired(), Email()])
-    picture = FileField('Update profile picture', validators=[FileAllowed(['jpg', 'png'])])
     submit = SubmitField('Update')
     
     def validate_username(self, username):
