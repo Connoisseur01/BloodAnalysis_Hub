@@ -1,28 +1,28 @@
 {% extends "layout.html" %}
 {% block content %}
-    <div>
+    <div class="auth-form">
         <form method="POST" action="">
             {{ form.hidden_tag() }}
-            <fieldset>
+            <fieldset class="form">
                 <Legend>Join</Legend>
-                <div class="form-group">
+                <div>
                     {{ form.username.label(class="form-label") }}
                     {{ form.username() }}
                 </div>
-                <div class="form-group">
+                <div>
                     {{ form.email.label(class="form-label") }}
                     {{ form.email() }}
                 </div>
-                <div class="form-group">
+                <div>
                     {{ form.password.label(class="form-label") }}
                     {{ form.password() }}
                 </div>
-                <div class="form-group">
+                <div>
                     {{ form.confirm_password.label(class="form-label") }}
                     {{ form.confirm_password() }}
                 </div>
             </fieldset>
-            <div class="form-group">
+            <div>
                 {{ form.submit() }}
             </div>
         </form>
