@@ -2,31 +2,22 @@
 {% block content %}
     <div class="auth-form">
         <div>
-            <img>
-            <div>
-                <h2>{{ current_user.username }}</h2>
-                <p>{{ current_user.email }}</p>
-            </div>
+            <h2>{{ current_user.username }}</h2>
+            <p>{{ current_user.email }}</p>
         </div>
         <form method="POST" action="" enctype="multipart/form-data">
             {{ form.hidden_tag() }}
-            <fieldset>
+            <fieldset class="form">
                 <Legend>Account Information</Legend>
-                <div>
-                    {{ form.gender.label() }}
+                    {{ form.gender.label(class="form-label") }}
                     {{ form.gender() }}
-                </div>
-                <div>
-                    {{ form.username.label() }}
+                    {{ form.username.label(class="form-label") }}
                     {{ form.username() }}
-                </div>
-                <div>
-                    {{ form.email.label() }}
+                    {{ form.email.label(class="form-label") }}
                     {{ form.email() }}
-                </div>
             </fieldset>
             <div>
-                {{ form.submit() }}
+                {{ form.submit(class="option") }}
             </div>
         </form>
     </div>

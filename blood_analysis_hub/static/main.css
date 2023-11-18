@@ -11,11 +11,21 @@ body {
 
 header {
   width: 100%;
-  background-color: #34495e;
+  background-color: rgb(124, 30, 52);
   color: #ecf0f1;
   padding: 0px;
   text-align: center;
   margin-bottom: 4rem;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: .75rem;
+}
+
+.form-label {
+  margin-top: .75rem;
 }
 
 .auth-form
@@ -30,6 +40,7 @@ header {
     padding: 1%;
     margin-top: 10vh;
     text-align: center;
+    border: 1px solid rgb(124, 30, 52);
 }
 
 .navbar {
@@ -79,7 +90,7 @@ header {
   transform: translateX(-50%);
   padding: 15px;
   color: #000000;
-  border-radius: .5rem;
+  border-radius: 1%;
   box-shadow: 0 4px .5rem rgba(0, 0, 0, 0.2);
 }
 
@@ -103,20 +114,20 @@ header {
   grid-row: span 4;
   padding: 20px;
   text-align: center;
-  border: 2px solid #3498db;
-  border-radius: .5rem;
+  border: 2px solid rgb(124, 30, 52);
+  border-radius: 1%;
 }
 
 .test {
   text-decoration: none;
-  border-radius: .5rem;
+  border-radius: 1%;
   color: #111827;
   font-weight: 600;
   margin-bottom: 0.75rem;
 }
 
 .test:hover {
-  color: #3498db;
+  color: rgb(124, 30, 52);
 }
 
 .graph-buttons {
@@ -131,7 +142,7 @@ header {
 .option{
   background-color: #FFFFFF;
   border: 0;
-  border-radius: .5rem;
+  border-radius: 1%;
   box-sizing: border-box;
   color: #111827;
   font-size: .875rem;
@@ -171,9 +182,9 @@ header {
   padding: 10px;
   margin: 5px;
   text-decoration: none;
-  color: #3498db;
+  color: rgb(124, 30, 52);
   background-color: #ecf0f1;
-  border: 1px solid #3498db;
-  border-radius: 5px;
+  border: 1px solid rgb(124, 30, 52);
+  border-radius: 1%;
 }
 

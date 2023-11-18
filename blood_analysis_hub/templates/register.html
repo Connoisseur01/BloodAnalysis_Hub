@@ -5,31 +5,21 @@
             {{ form.hidden_tag() }}
             <fieldset class="form">
                 <Legend>Join</Legend>
-                <div>
                     {{ form.username.label(class="form-label") }}
                     {{ form.username() }}
-                </div>
-                <div>
                     {{ form.email.label(class="form-label") }}
                     {{ form.email() }}
-                </div>
-                <div>
                     {{ form.password.label(class="form-label") }}
                     {{ form.password() }}
-                </div>
-                <div>
                     {{ form.confirm_password.label(class="form-label") }}
                     {{ form.confirm_password() }}
-                </div>
             </fieldset>
             <div>
-                {{ form.submit() }}
+                {{ form.submit(class="option") }}
             </div>
+            <small>
+                Already Have An Account? <a href="{{ url_for('users.login') }}">Sign In</a>
+            </small>
         </form>
-    </div>
-    <div>
-        <small>
-            Already Have An Account? <a href="{{ url_for('users.login') }}">Sign In</a>
-        </small>
     </div>
 {% endblock content %}

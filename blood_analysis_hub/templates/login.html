@@ -5,27 +5,20 @@
             {{ form.hidden_tag() }}
             <fieldset class="form">
                 <Legend>Log In</Legend>
-                <div>
+                
                     {{ form.email.label(class="form-label") }}
                     {{ form.email() }}
-                </div>
-                <div>
                     {{ form.password.label(class="form-label") }}
                     {{ form.password() }}
-                </div>
-                <div>
                     {{ form.remember() }}
                     {{ form.remember.label(class="form-label") }}
-                </div>
             </fieldset>
             <div>
-                {{ form.submit() }}
+                {{ form.submit(class="option") }}
             </div>
+            <small>
+                New to Blood Analisys Hub? <a href="{{ url_for('users.register') }}">Sign Up</a>
+            </small>
         </form>
-    </div>
-    <div>
-        <small>
-            New to Blood Analisys Hub? <a href="{{ url_for('users.register') }}">Sign Up</a>
-        </small>
     </div>
 {% endblock content %}
