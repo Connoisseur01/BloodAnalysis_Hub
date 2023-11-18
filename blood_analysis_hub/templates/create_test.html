@@ -3,47 +3,29 @@
     <div class="auth-form">
         <form method="POST" action="">
             {{ form.hidden_tag() }}
-            <fieldset>
+            <fieldset class="form">
                 <Legend >{{ legend }}</Legend>
-                <div class="form-group">
                     {{ form.title.label(class="form-label") }}
                     {{ form.title() }}
-                </div>
-                <div>
                     {{ form.hb.label(class="form-label") }}
                     {{ form.hb() }}
-                </div>
-                <div>
                     {{ form.hct.label(class="form-label") }}
                     {{ form.hct() }}
-                </div>
-                <div>
                     {{ form.rbc.label(class="form-label") }}
                     {{ form.rbc() }}
-                </div>
-                <div>
                     {{ form.wbc.label(class="form-label") }}
                     {{ form.wbc() }}
-                </div>
-                <div>
                     {{ form.pc.label(class="form-label") }}
                     {{ form.pc() }}
-                </div>
-                <div>
                     {{ form.mcv.label(class="form-label") }}
                     {{ form.mcv() }}
-                </div>
-                <div>
                     {{ form.mch.label(class="form-label") }}
                     {{ form.mch() }}
-                </div>
-                <div>
                     {{ form.mchc.label(class="form-label") }}
                     {{ form.mchc() }}
-                </div>
             </fieldset>
             <div>
-                {{ form.submit() }}
+                {{ form.submit(class="option") }}
             </div>
         </form>
     </div>
