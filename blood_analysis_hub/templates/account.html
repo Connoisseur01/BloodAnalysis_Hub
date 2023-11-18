@@ -12,9 +12,27 @@
                     {{ form.gender.label(class="form-label") }}
                     {{ form.gender() }}
                     {{ form.username.label(class="form-label") }}
-                    {{ form.username() }}
+                    {% if form.username.errors %}
+                        {{ form.username(class="invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.username.errors %}
+                            <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.username() }}
+                    {% endif %}
                     {{ form.email.label(class="form-label") }}
-                    {{ form.email() }}
+                    {% if form.email.errors %}
+                        {{ form.email(class="invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.email.errors %}
+                            <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.email() }}
+                    {% endif %}
             </fieldset>
             <div>
                 {{ form.submit(class="option") }}
