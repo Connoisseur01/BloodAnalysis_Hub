@@ -14,7 +14,7 @@ class User(db.Model, UserMixin):
     password = db.Column(db.String(60), nullable=False)
     age = db.Column(db.Integer, CheckConstraint('age >= 0 AND age <= 120'), nullable=True)
     gender = db.Column(db.Enum('male', 'female', 'other', name='gender_enum'), nullable=True)
-    tests = db.relationship('Test', backref='author', lazy=True)
+    tests = db.relationship('Test', backref='author', lazy=True, cascade='all, delete-orphan')
     
     def __init__(self, username, email, password, age=None, gender=None):
         self.username = username
