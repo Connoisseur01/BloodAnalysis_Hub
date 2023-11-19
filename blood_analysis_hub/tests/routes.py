@@ -4,6 +4,7 @@ from blood_analysis_hub import db, CBC_REFERENCE
 from blood_analysis_hub.tests.forms import TestForm
 from blood_analysis_hub.models import Test
 from blood_analysis_hub.tests.utils import compare_test_results 
+from blood_analysis_hub.text import CBC_EXPLANATION
 
 
 
@@ -32,7 +33,7 @@ def test(test_id):
     else:
         reference = CBC_REFERENCE[current_user.gender]
         interpretation = compare_test_results(test, reference)
-        return render_template('test.html', title=test.title, test=test, interpretation=interpretation)
+        return render_template('test.html', title=test.title, test=test, explanation=CBC_EXPLANATION, interpretation=interpretation)
     return render_template('test.html', title=test.title, test=test)
 
 @tests.route("/test/<int:test_id>/update", methods=['GET', 'POST'])

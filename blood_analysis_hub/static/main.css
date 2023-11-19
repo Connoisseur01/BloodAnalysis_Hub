@@ -201,3 +201,18 @@ input {
   border-radius: 1%;
 }
 
+.test-value {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  border-radius: 2%;
+}
+
+.test-value span {
+  grid-column: span 2;
+  text-align: left;
+  color:rgb(124, 30, 52);
+}
+
+.test-form {
+  width: 60%;
+}
