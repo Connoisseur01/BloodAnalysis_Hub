@@ -7,23 +7,20 @@
             <a href="{{ url_for('tests.update_test', test_id=test.id) }}">Update</a>
             <a href="{{ url_for('tests.delete_test', test_id=test.id) }}">Delete</a>
         </div>
-        {% for attribute, value in test.__dict__.items() %}
-            {% if attribute not in ('title', 'date_posted', 'user_id', 'id', '_sa_instance_state', 'author') %}
-
-                {% if current_user.gender and interpretation[attribute] != 'Within Reference Range' %}
-                <div class="test-value  explanation">
-                    <p class="value">{{attribute}} : {{value}}</p>
-                    <p class="interpretation">{{interpretation[attribute]}}</p>
-                    <span>{{explanation[attribute][interpretation[attribute]]}}</span>
-                </div>
-                {% else %}
-                <div class="test-value">
-                    <p class="value">{{attribute}} : {{value}}</p>
-                    {% if current_user.gender %}
-                        <p class="interpretation">{{interpretation[attribute]}}</p>
-                    {% endif %}
-                </div>
+        {% for attribute in values %}
+            {% if current_user.gender and interpretations[attribute] != 'Within Reference Range' %}
+            <div class="test-value  explanation">
+                <p class="value">{{attribute}} : {{values[attribute]}}</p>
+                <p class="interpretation">{{interpretations[attribute]}}</p>
+                <span>{{descriptions[attribute][interpretations[attribute]]}}</span>
+            </div>
+            {% else %}
+            <div class="test-value">
+                <p class="value">{{attribute}} : {{value}}</p>
+                {% if current_user.gender %}
+                    <p class="interpretation">{{interpretations[attribute]}}</p>
                 {% endif %}
+            </div>
             {% endif %}
         {% endfor %}
     </div>

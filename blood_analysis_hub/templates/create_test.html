@@ -1,32 +1,40 @@
 {% extends "layout.html" %}
 {% block content %}
     <div class="auth-form">
-        <form method="POST" action="">
+        <form method="POST">
             {{ form.hidden_tag() }}
-            <fieldset class="form">
+            <fieldset id="form">
                 <Legend >{{ legend }}</Legend>
                     {{ form.title.label(class="form-label") }}
-                    {{ form.title() }}
-                    {{ form.hb.label(class="form-label") }}
-                    {{ form.hb() }}
-                    {{ form.hct.label(class="form-label") }}
-                    {{ form.hct() }}
-                    {{ form.rbc.label(class="form-label") }}
-                    {{ form.rbc() }}
-                    {{ form.wbc.label(class="form-label") }}
-                    {{ form.wbc() }}
-                    {{ form.pc.label(class="form-label") }}
-                    {{ form.pc() }}
-                    {{ form.mcv.label(class="form-label") }}
-                    {{ form.mcv() }}
-                    {{ form.mch.label(class="form-label") }}
-                    {{ form.mch() }}
-                    {{ form.mchc.label(class="form-label") }}
-                    {{ form.mchc() }}
+                    {{ form.title() }} 
+                    <div class="form-group">
+                    {{ form.select_attribute.label(class="form-label") }}
+                    {{ form.select_attribute(id='select-attribute') }}
+                    <button type="button" id="add-value-btn"> Add value </button>
+                    </div>
+                    {% if values %}
+                        {% for attr in values %}
+                            <div class="form-group">
+                                <label class="form-label">{{attr}}</label>
+                                <input type="number" value="{{values[attr]}}" name="{{attr}}">
+                                <p>{{units[attr]}}</p>
+                            </div>
+                        {% endfor %}
+                    {% endif %}
             </fieldset>
             <div>
                 {{ form.submit(class="option") }}
             </div>
         </form>
     </div>
+    <script>
+        window.units = JSON.parse('{{ units | tojson | safe}}');
+        window.shown = []
+        {% if values %}
+            {% for attr in values %}
+                window.shown.push('{{attr}}')
+            {% endfor %}
+        {% endif %}
+    </script>
+    <script src="{{ url_for('static', filename='test.js') }}"></script>
 {% endblock content %}

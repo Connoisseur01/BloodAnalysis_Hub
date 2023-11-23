@@ -1,13 +1,11 @@
 
-def compare_test_results(test, referance_values):
+def compare_test_results(values, referance_values):
     interpretation = {}
-    for attribute, value in vars(test).items():
-        if attribute in ('title', 'date_posted', 'user_id', 'id', '_sa_instance_state', 'author'):
-            continue
+    for attribute in values:
         reference = referance_values[attribute]
-        if reference["min"] <= value <= reference["max"]:
+        if reference["min"] <= values[attribute] <= reference["max"]:
             interpretation[attribute] = "Within Reference Range"
-        elif value > reference["max"]:
+        elif values[attribute] > reference["max"]:
             interpretation[attribute] = "High"
         else:
             interpretation[attribute] = "Low"
