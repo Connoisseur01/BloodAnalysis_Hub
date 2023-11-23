@@ -16,7 +16,7 @@
             </div>
             {% else %}
             <div class="test-value">
-                <p class="value">{{attribute}} : {{value}}</p>
+                <p class="value">{{attribute}} : {{values[attribute]}}</p>
                 {% if current_user.gender %}
                     <p class="interpretation">{{interpretations[attribute]}}</p>
                 {% endif %}
