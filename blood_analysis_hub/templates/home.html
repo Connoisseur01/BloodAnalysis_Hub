@@ -31,7 +31,7 @@
     </main>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script>
-        window.values = JSON.parse('{{ values | tojson | safe}}');
+        window.values = JSON.parse('{{ values | safe}}');
     </script>
     <script src="{{ url_for('static', filename='graphs.js') }}"></script>
 {% endblock content %}

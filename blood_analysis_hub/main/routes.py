@@ -1,6 +1,8 @@
+import json
 from flask import Blueprint, render_template, request
 from flask_login import current_user, login_required
 from sqlalchemy import and_
+from flask import jsonify
 from blood_analysis_hub.models import Attribute_list, Test, Attribute
 
 main = Blueprint('main', __name__)
@@ -16,13 +18,19 @@ def home():
     attributes = Attribute.query.all()
     values = {}
     for attribute in attributes:
+        graph_values = []
+        dates = []
         vals = Attribute_list.query.filter(and_(Attribute_list.attribute_id == attribute.id,
                                                Attribute_list.test_id.in_(test_ids))).all()
         for val in vals:
-            values[attribute.name] = {
-                'value': val.value,
-                'date' : Test.query.filter_by(id=val.test.id).first().date_posted.strftime('%Y-%m-%d')
+            graph_values.append(float(val.value))
+            dates.append(Test.query.filter_by(id=val.test.id).first().date_posted.strftime('%Y-%m-%d'))
+            
+        values[attribute.name] = {
+                'value': graph_values,
+                'date' : dates
             }
+    values = json.dumps(values)
     return render_template('home.html', page_tests=page_tests, values=values,
                            tests=tests, attributes=attributes)
 

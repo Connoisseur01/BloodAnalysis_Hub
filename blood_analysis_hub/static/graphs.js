@@ -1,5 +1,5 @@
-const values = window.values
-
+var values = window.values
+console.log(values)
 var container = document.getElementById('myChart');
 var selectGraph = document.getElementById('graph');
 
@@ -7,13 +7,11 @@ var myChart;
 
 // Function to update the graph based on the selected attribute
 function updateGraph(selectedAttribute) {
-    var attributeData = window.values[selectedAttribute];
+    var attributeData = values[selectedAttribute];
 
     // Extracting values and dates
-    var values =attributeData.value
+    var vals = attributeData.value
     var dates = attributeData.date
-    console.log(dates)
-    console.log(values)
 
     // Clear previous chart if exists
     if (myChart) {
@@ -27,7 +25,7 @@ function updateGraph(selectedAttribute) {
             labels: dates,
             datasets: [{
                 label: selectedAttribute,
-                data: values,
+                data: vals,
                 fill: false,
                 borderColor: 'rgb(124, 30, 52)',
                 tension: 0.1

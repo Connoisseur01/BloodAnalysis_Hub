@@ -23,7 +23,7 @@ attribute = Attribute(name='mch', unit='pg', min_male=0.39, max_male=0.54, min_f
                       desc_over='High MCH could indicate certain types of anemia or conditions affecting hemoglobin levels',
                       desc_under='Low MCH might suggest iron deficiency anemia or other types of anemia')
 db.session.add(attribute)
-attribute = Attribute(name='mchc', unit='g/L', min_male=4.81, max_male=0.54, min_female=5.58, max_female=5.58,
+attribute = Attribute(name='mchc', unit='g/L', min_male=0.54, max_male=4.52, min_female=0.54, max_female=4.52,
                       desc_over='High MCHC levels might indicate conditions like spherocytosis or other disorders affecting hemoglobin concentration',
                       desc_under='Low MCHC might suggest conditions like iron deficiency anemia or thalassemia')
 db.session.add(attribute)
