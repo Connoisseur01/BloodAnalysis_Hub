@@ -24,28 +24,36 @@ class User(db.Model, UserMixin):
         self.gender = gender
 
     def __repr__(self):
-        return f"User('{self.username}', '{self.email}', '{self.image_file}')"
+        return f"User('{self.username}', '{self.email}')"
 
 
 class Test(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(100), nullable=False)
     date_posted = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
-    # Complete blood count (CBC)
-    # Red blood cells
-    hb = db.Column(db.Numeric(scale=2), nullable=False) # Heamoglobin [g/L]
-    hct = db.Column(db.Numeric(scale=2), CheckConstraint('hct >= 0 AND hct <= 100'), nullable=False) # Haematoglobin [%]
-    rbc = db.Column(db.Numeric(scale=2), nullable=False) # Red Blood Cell Count [cells/L]
-    # Red blood cell indices
-    mcv = db.Column(db.Numeric(scale=2), nullable=False) # Mean Corpuscular Volume [fL]
-    mch = db.Column(db.Numeric(scale=2), nullable=False) # Mean Corpuscular Hemoglobin [pg]
-    mchc = db.Column(db.Numeric(scale=2), nullable=False) # Mean Corpuscular Hemoglobin Concentration [g/L]
-    # white blood cells
-    wbc = db.Column(db.Numeric(scale=2), nullable=False) # White Blood Cell Count [cells/L]
-    # Platelets
-    pc = db.Column(db.Numeric(scale=2), nullable=False) # Platelet Count [cells/L]
-    
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
+    attributes = db.relationship('Attribute_list', backref='test', lazy=True, cascade='all, delete-orphan')
 
     def __repr__(self):
         return f"Test('{self.title}', '{self.date_posted}')"
+    
+class Attribute_list(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    test_id = db.Column(db.Integer, db.ForeignKey('test.id'), nullable=False)
+    attribute_id = db.Column(db.Integer, db.ForeignKey('attribute.id'), nullable=False)
+    value = db.Column(db.Numeric(scale=2), nullable=False)
+    
+    def __repr__(self):
+        return f"Attribute('{self.attribute_id}', '{self.value}')"
+    
+
+class Attribute(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(100), nullable=False)
+    unit = db.Column(db.String(10), nullable=False)
+    min_male = db.Column(db.Numeric(scale=2), nullable=False)
+    max_male = db.Column(db.Numeric(scale=2), nullable=False)
+    min_female = db.Column(db.Numeric(scale=2), nullable=False)
+    max_female = db.Column(db.Numeric(scale=2), nullable=False)
+    desc_over = db.Column(db.String(500), nullable=False)
+    desc_under = db.Column(db.String(500), nullable=False)
