@@ -1,48 +1,51 @@
-    const labels = window.graphData.labels;
+const values = window.values
 
-    const all_values = {
-        'HB': window.graphData.hb, 
-        'HCT': window.graphData.hct, 
-        'RBC': window.graphData.rbc, 
-        'MCV': window.graphData.mcv, 
-        'MCH': window.graphData.mch, 
-        'MCHC': window.graphData.mchc, 
-        'WBC': window.graphData.wbc, 
-        'PLT': window.graphData.plt, 
+var container = document.getElementById('myChart');
+var selectGraph = document.getElementById('graph');
+
+var myChart;
+
+// Function to update the graph based on the selected attribute
+function updateGraph(selectedAttribute) {
+    var attributeData = window.values[selectedAttribute];
+
+    // Extracting values and dates
+    var values =attributeData.value
+    var dates = attributeData.date
+    console.log(dates)
+    console.log(values)
+
+    // Clear previous chart if exists
+    if (myChart) {
+        myChart.destroy();
     }
 
-    const container = document.getElementById('graphContainer');
+    // Create a new chart
+    myChart = new Chart(container, {
+        type: 'line',
+        data: {
+            labels: dates,
+            datasets: [{
+                label: selectedAttribute,
+                data: values,
+                fill: false,
+                borderColor: 'rgb(124, 30, 52)',
+                tension: 0.1
+            }]
+        }
+    });
+}
 
-    function show_graph(buttonId) {
-        console.log(buttonId)
-        container.innerHTML = '';
-        const canvas = document.createElement('canvas');
-        container.appendChild(canvas);
+// Event listener for select change
+selectGraph.addEventListener('change', function () {
+    var selectedAttribute = this.value;
+    updateGraph(selectedAttribute);
+});
 
-        new Chart(canvas, {
-            type: 'line',
-            data: {
-                labels: labels,
-                datasets: [
-                    {
-                        label: buttonId,
-                        data: all_values[buttonId],
-                        borderColor: 'rgba(75, 192, 192, 1)',
-                        borderWidth: 2,
-                        fill: false,
-                        hidden: false,
-                    },
-                ],
-            },
-            options: {
-                scales: {
-                    x: {
-                        type: 'category',
-                    },
-                    y: {
-                        beginAtZero: true,
-                    },
-                },
-            },
-        });
-    }
+// Initial graph creation based on the default selected value
+updateGraph(selectGraph.value);
+
+
+
+
+

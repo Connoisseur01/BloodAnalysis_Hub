@@ -18,45 +18,20 @@
                 {% endif %}
             {% endfor %}
         </div>
-        <div class="graph-buttons">
-            <button class="option" id="HB" onclick="show_graph(this.id)">HB</button>
-            <button class="option" id="HCT" onclick="show_graph(this.id)">HCT</button>
-            <button class="option" id="RBC" onclick="show_graph(this.id)">RBC</button>
-            <button class="option" id="MCV" onclick="show_graph(this.id)">MCV</button>
-            <button class="option" id="MCH" onclick="show_graph(this.id)">MCH</button>
-            <button class="option" id="MCHC" onclick="show_graph(this.id)">MCHC</button>
-            <button class="option" id="WBC" onclick="show_graph(this.id)">WBC</button>
-            <button class="option" id="PLT" onclick="show_graph(this.id)">PLT</button>
+        <div class="graph-select">
+            <select name="select graph" id="graph">
+                {% for attribute in attributes %}
+                <option value="{{attribute.name}}">{{attribute.name}}</option>
+                {% endfor %}
+            </select>
         </div>
-        
-        <container id="graphContainer"></container>
-        
+        <div id='Chart'>
+            <canvas id="myChart"></canvas>
+        </div>
     </main>
-
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script>
-        window.graphData = {
-        labels: [],
-        hb: [],
-        hct: [],
-        rbc: [],
-        mcv: [],
-        mch: [],
-        mchc: [],
-        wbc: [],
-        plt: []
-        }
-        
-        {% for test in tests %}
-            window.graphData.labels.push('{{test.id}}')
-            window.graphData.hb.push({{test.hb}})
-            window.graphData.hct.push({{test.hct}})
-            window.graphData.rbc.push({{test.rbc}})
-            window.graphData.mcv.push({{test.mcv}})
-            window.graphData.mch.push({{test.mch}})
-            window.graphData.mchc.push({{test.mchc}})
-            window.graphData.wbc.push({{test.wbc}})
-            window.graphData.plt.push({{test.pc}})
-        {% endfor %}
+        window.values = JSON.parse('{{ values | tojson | safe}}');
     </script>
     <script src="{{ url_for('static', filename='graphs.js') }}"></script>
 {% endblock content %}
