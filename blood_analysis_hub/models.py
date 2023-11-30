@@ -13,7 +13,7 @@ class User(db.Model, UserMixin):
     email = db.Column(db.String(120), unique=True, nullable=False)
     password = db.Column(db.String(60), nullable=False)
     age = db.Column(db.Integer, CheckConstraint('age >= 0 AND age <= 120'), nullable=True)
-    gender = db.Column(db.Enum('male', 'female', 'other', name='gender_enum'), nullable=True)
+    gender = db.Column(db.Enum('male', 'female', name='gender_enum'), nullable=True)
     tests = db.relationship('Test', backref='author', lazy=True, cascade='all, delete-orphan')
     
     def __init__(self, username, email, password, age=None, gender=None):

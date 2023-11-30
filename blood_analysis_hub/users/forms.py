@@ -31,7 +31,7 @@ class LoginForm(FlaskForm):
     submit = SubmitField('Login')
     
 class UpdateAccountForm(FlaskForm):
-    gender = SelectField('Gender', choices=['male', 'female', 'other'])
+    gender = SelectField('Gender', choices=['male', 'female'])
     username = StringField('Username',
                             validators=[DataRequired(), Length(min=2, max=20)])
     email = StringField('Email', validators=[DataRequired(), Email()])
