@@ -207,8 +207,8 @@ input {
 
 .pagination a {
   display: inline-block;
-  padding: 10px;
-  margin: 5px;
+  padding: 0.75rem;
+  margin: 0.5rem;
   text-decoration: none;
   color: rgb(124, 30, 52);
   background-color: #ecf0f1;
@@ -226,6 +226,15 @@ input {
   grid-column: span 2;
   text-align: left;
   color:rgb(124, 30, 52);
+}
+
+.explanation > span{
+  display: none;
+}
+
+.explanation:hover > span {
+  display: block;
+  cursor: pointer;
 }
 
 .test-form {
