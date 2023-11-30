@@ -34,8 +34,11 @@ def new_test():
     return render_template('create_test.html', title='New Test',units=units, form=form, legend='New test')
 
 @tests.route("/test/<int:test_id>")
+@login_required
 def test(test_id):
     test = Test.query.get_or_404(test_id)
+    if test.author != current_user:
+        abort(403)
     attribute_list = test.attributes
     values = {}
     descriptions = {}
