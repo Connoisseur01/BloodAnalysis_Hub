@@ -46,7 +46,7 @@ def test(test_id):
     reference = {}
     for value in attribute_list:
         attribute = Attribute.query.filter_by(id=value.attribute_id).first()
-        values[attribute.name] = value.value
+        values[attribute.name] = (float(value.value), attribute.unit)
         descriptions[attribute.name] = {
             'High' : attribute.desc_over,
             'Low' : attribute.desc_under
@@ -65,7 +65,7 @@ def test(test_id):
         flash('please select your gender in the account page for test evaluation', 'danger')
     else:
         interpretations = compare_test_results(values, reference)
-        return render_template('test.html', test=test, values=values,
+        return render_template('test.html', test=test, values=values, reference=reference,
                                descriptions=descriptions, interpretations=interpretations)
     return render_template('test.html', test=test, values=values)
 
