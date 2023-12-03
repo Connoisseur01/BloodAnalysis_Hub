@@ -12,15 +12,13 @@ class User(db.Model, UserMixin):
     username = db.Column(db.String(20), unique=True, nullable=False)
     email = db.Column(db.String(120), unique=True, nullable=False)
     password = db.Column(db.String(60), nullable=False)
-    age = db.Column(db.Integer, CheckConstraint('age >= 0 AND age <= 120'), nullable=True)
     gender = db.Column(db.Enum('male', 'female', name='gender_enum'), nullable=True)
     tests = db.relationship('Test', backref='author', lazy=True, cascade='all, delete-orphan')
     
-    def __init__(self, username, email, password, age=None, gender=None):
+    def __init__(self, username, email, password, gender=None):
         self.username = username
         self.email = email
         self.password = password
-        self.age = age
         self.gender = gender
 
     def __repr__(self):
@@ -39,7 +37,7 @@ class Test(db.Model):
     
 class Attribute_list(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    test_id = db.Column(db.Integer, db.ForeignKey('test.id'), nullable=False)
+    test_id = db.Column(db.Integer, db.ForeignKey('test.id'),  nullable=False)
     attribute_id = db.Column(db.Integer, db.ForeignKey('attribute.id'), nullable=False)
     value = db.Column(db.Numeric(scale=2), nullable=False)
     

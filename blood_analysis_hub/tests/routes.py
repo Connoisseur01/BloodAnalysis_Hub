@@ -10,13 +10,14 @@ from blood_analysis_hub.tests.utils import compare_test_results
 
 tests = Blueprint('tests', __name__)
 
-@tests.route("/new", methods=['GET', 'POST'])
+@tests.route("/test/new", methods=['GET', 'POST'])
 @login_required
 def new_test():
     attributes = Attribute.query.all()
     names = [a.name for a in attributes]
     units = dict([(a.name, a.unit) for a in attributes])
     form = create_testForm(attributes=names)
+    form.title.data = 'New test'
     if request.method == 'POST':
         data = {}
         for key in request.form:
@@ -67,7 +68,7 @@ def test(test_id):
         interpretations = compare_test_results(values, reference)
         return render_template('test.html', test=test, values=values, reference=reference,
                                descriptions=descriptions, interpretations=interpretations)
-    return render_template('test.html', test=test, values=values)
+    return render_template('test.html', test=test, values=values, reference=reference)
 
 @tests.route("/test/<int:test_id>/update", methods=['GET', 'POST'])
 @login_required
