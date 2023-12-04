@@ -8,10 +8,10 @@
             <a href="{{ url_for('tests.delete_test', test_id=test.id) }}">Delete</a>
         </div>
             <div class="test-value">
-                <p class="attribute">attribute</p>
-                <p class="value">value</p>
-                <p class="reference">reference range</p>
-                <p class="interpretation">interpretation</p>
+                <p class="attribute"><b>attribute</b></p>
+                <p class="value"><b>value</b></p>
+                <p class="reference"><b>reference range</b></p>
+                <p class="interpretation"><b>interpretation</b></p>
             </div>
             {% for attribute in values %}
                 {% if current_user.gender and interpretations[attribute] != 'Within Reference Range' %}
